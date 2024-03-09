@@ -15,14 +15,17 @@ export const DatePage = () => {
     )
 
     const currentDate = DateTime.now()
-    const daysDifference = currentDate.diff(parsedTimestamp, "days").days
+    const diff = currentDate.diff(parsedTimestamp, ["days", "hours", "minutes"])
+    const { days, hours, minutes } = diff
+    const daysDifference = days
+    const hoursDifference = Math.floor(hours) + Math.floor(minutes / 60)
 
     return (
         <div className="w-screen h-screen flex items-center justify-center bg-gradient-to-tr from-indigo-200 to-violet-300">
             <div className="text-center text-violet-700">
                 <p>{formattedTimestamp}</p>
                 <p className="text-4xl font-bold mt-5">
-                    {daysDifference.toFixed(1)} days
+                    {daysDifference} days {hoursDifference.toFixed(0)} hours
                 </p>
             </div>
         </div>
