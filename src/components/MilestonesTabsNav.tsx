@@ -25,7 +25,7 @@ export const MilestonesTabsNav = ({
     reachedCount: number
 }) => {
     return (
-        <div className=" fixed md:sticky bottom-0 md:top-0 z-10 w-full p-1 md:p-2">
+        <div className="fixed md:sticky bottom-5 md:top-0 z-10 w-full p-1 md:p-2">
             <Tabs.List className="bg-slate-100/70 shrink-0 flex p-1 rounded-xl backdrop-blur-sm">
                 <TabTrigger
                     value="upcoming"
