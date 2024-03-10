@@ -61,7 +61,7 @@ export const MilestonesSection = ({
 
     return (
         <Tabs.Root
-            className="flex flex-col relative w-full"
+            className="flex flex-col relative w-full pb-20 md:pb-0"
             defaultValue="upcoming">
             <ScrollToTop />
             <MilestonesTabsNav
