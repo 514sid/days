@@ -15,8 +15,17 @@ const router = createBrowserRouter([
                 element: <HomePage />,
             },
             {
-                path: "/:timestamp",
-                element: <DatePage />,
+                path: "/:fromDate",
+                children: [
+                    {
+                        path: "",
+                        element: <DatePage />,
+                    },
+                    {
+                        path: ":toDate",
+                        element: <DatePage />,
+                    },
+                ],
             },
         ],
     },
