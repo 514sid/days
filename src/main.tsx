@@ -5,6 +5,7 @@ import { HomePage } from "./pages/HomePage"
 import { MainLayout } from "./layouts/MainLayout"
 import { DatePage } from "./pages/DatePage"
 import "./index.css"
+import "./i18n"
 
 const router = createBrowserRouter([
     {

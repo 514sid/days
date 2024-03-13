@@ -49,9 +49,10 @@ export const MilestonesSection = ({
         (milestone) => milestone.date.startOf("day") >= endDate.startOf("day")
     )
 
-    const reachedMilestones = milestoneDates.filter(
+    const pastMilestones = milestoneDates.filter(
         (_milestone, index) => index < nextMilestoneIndex
     ).reverse()
+    
     const nextMilestone = milestoneDates.find(
         (_milestone, index) => index === nextMilestoneIndex
     )
@@ -66,7 +67,7 @@ export const MilestonesSection = ({
             <ScrollToTop />
             <MilestonesTabsNav
                 upcomingCount={nextMilestone ? upcomingMilestones.length + 1 : upcomingMilestones.length}
-                reachedCount={reachedMilestones.length}
+                pastCount={pastMilestones.length}
             />
             <TabContent
                 nextMilestone={nextMilestone}
@@ -75,9 +76,9 @@ export const MilestonesSection = ({
                 value="upcoming"
             />
             <TabContent
-                milestones={reachedMilestones}
+                milestones={pastMilestones}
                 endDate={endDate}
-                value="reached"
+                value="past"
             />
         </Tabs.Root>
     )

@@ -1,16 +1,8 @@
-const typePlurals: Record<string, string> = {
-    year: "years",
-    month: "months",
-    day: "days",
-    hour: "hours",
-    second: "seconds",
-}
+import { useTranslation } from "react-i18next"
 
 export const pluralizeType = (type: string, amount: number) => {
-    if (amount === 1) {
-        return type
-    } else {
-        const plural = typePlurals[type]
-        return plural
-    }
+    const { t } = useTranslation()
+
+    const plural = t(type, { count: amount })
+    return plural
 }

@@ -2,8 +2,10 @@ import { DateTime } from "luxon"
 import { DiffCard } from "./DiffCard"
 import { DurationUnit } from "../enums/DurationUnit"
 import { useDateTimeDiff } from "../hooks/useDateTimeDiff"
+import { getLocaleDate } from "../helpers/getLocaleDate"
 
 export const DiffSection = ({ startDate, endDate }: { startDate: DateTime, endDate: DateTime }) => {
+
     const dateTimeDiff = useDateTimeDiff(startDate, endDate)
     
     const renderDiffCards = () => {
@@ -27,8 +29,8 @@ export const DiffSection = ({ startDate, endDate }: { startDate: DateTime, endDa
 
     return (
         <div className="sticky top-0 px-5">
-            <div className="py-10 text-xl font-bold">
-                {startDate.toLocaleString(DateTime.DATE_FULL)}
+            <div className="py-10 text-3xl font-bold">
+                {getLocaleDate(startDate)}
             </div>
             <div className="flex flex-col gap-2">
                 {renderDiffCards()}

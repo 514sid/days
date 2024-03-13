@@ -15,3 +15,5 @@ export type Diff = {
     minutes: number
     seconds: number
 }
+
+export type LanguageCode = "en" | "de" | "es" | "it" | "pt" | "tr" | "ru"

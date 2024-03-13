@@ -4,20 +4,32 @@ import {
     getYearMilestones,
     getDayMilestones,
     getMonthMilestones,
+    getHourMilestones,
+    getMinuteMilestones,
+    getWeekMilestones
 } from "../helpers"
 import { Milestone } from "../types"
-import { getHoursMilestones } from "./getHoursMilestones"
 
 export const getAllMilestones = (startDate: DateTime) => {
-    const milestones: Milestone[] = [
-        ...getYearMilestones(startDate),
-        ...getMonthMilestones(startDate),
-        ...getHoursMilestones(startDate),
-        ...getDayMilestones(startDate),
-        ...getSecondMilestones(startDate),
+    const milestones: Milestone[] = []
+
+    const milestoneFunctions = [
+        getYearMilestones,
+        getMonthMilestones,
+        getWeekMilestones,
+        getHourMilestones,
+        getMinuteMilestones,
+        getDayMilestones,
+        getSecondMilestones,
     ]
 
-    milestones.sort((a, b) => a.date.toMillis() - b.date.toMillis())
+    milestoneFunctions.forEach(func => {
+        milestones.push(...func(startDate))
+    })
 
-    return milestones
+    const filteredMilestones = milestones.filter((a) => a.date.year < 2150)
+
+    filteredMilestones.sort((a, b) => a.date.toMillis() - b.date.toMillis())
+
+    return filteredMilestones
 }
